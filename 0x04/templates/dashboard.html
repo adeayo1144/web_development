@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-100 flex overflow-hidden">
+
+    <aside class="fixed left-0 top-0 z-50 h-screen w-64 overflow-hidden 
+    bg-gradient-to-b from-indigo-700 to-blue-800 text-white shadow-xl">
+
+        <!-- Logo -->
+        <div class="px-6 py-8 border-b border-white/10">
+            <div class="flex items-center gap-3">
+
+                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/20">
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M7 4v16M17 4v16M3 8h18M3 16h18"
+                        />
+                    </svg>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-bold">Movie App</h2>
+                    <p class="text-xs text-blue-200">Admin Dashboard</p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="px-4 py-6 space-y-2">
+
+            <!-- Dashboard -->
+            <a
+                href="#"
+                onclick="showDashboard(); return false;"
+                class="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 font-medium transition hover:bg-white/20"
+            >
+
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"
+                    />
+                </svg>
+
+                Dashboard
+
+            </a>
+
+
+            <!-- Movies -->
+            <a
+                href="#"
+                onclick="showMovies(); return false;"
+                class="flex items-center gap-3 rounded-xl px-4 py-3 font-medium text-blue-100 transition hover:bg-white/20 hover:text-white"
+            >
+
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                    />
+                </svg>
+
+                Movies
+
+            </a>
+
+
+            <!-- Logout -->
+            <a
+                href="/logout"
+                class="flex items-center gap-3 rounded-xl px-4 py-3 font-medium text-blue-100 transition hover:bg-red-500/20 hover:text-white"
+            >
+
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                </svg>
+
+                Logout
+
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar Footer -->
+        <div class="absolute bottom-0 left-0 w-64 p-4">
+
+            <div class="rounded-xl bg-white/10 p-4">
+
+                <p class="text-sm font-medium">
+                    Movie Manager
+                </p>
+
+                <p class="mt-1 text-xs text-blue-200">
+                    Manage your movie collection
+                </p>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="ml-64 h-screen flex-1 overflow-y-auto">
+
+
+        <!-- Header -->
+        <header class="flex items-center justify-between border-b border-slate-200 bg-white px-8 py-5 shadow-sm">
+
+            <div>
+
+                <h1 class="text-2xl font-bold text-slate-800">
+                    Movie Dashboard
+                </h1>
+
+                <p class="text-sm text-slate-500">
+                    Manage your movies and recent activity
+                </p>
+
+            </div>
+
+
+            <div class="flex items-center gap-3">
+
+                <div class="hidden text-right sm:block">
+
+                    <p class="text-sm font-semibold text-slate-700">
+                        Welcome back
+                    </p>
+
+                    <p class="text-xs text-slate-400">
+                        Movie Administrator
+                    </p>
+
+                </div>
+
+                <div class="flex h-11 w-11 items-center justify-center rounded-full bg-indigo-100 font-bold text-indigo-700">
+                    MA
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Page Content -->
+        <div class="p-6 md:p-8">
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <div id="dashboardPage">
+
+                <!-- Welcome Card -->
+                <div class="rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 p-8 text-white shadow-lg">
+
+                    <div class="max-w-2xl">
+
+                        <p class="mb-2 text-sm font-medium text-blue-100">
+                            MOVIE MANAGEMENT
+                        </p>
+
+                        <h2 class="text-3xl font-bold md:text-4xl">
+                            Welcome to your Movie Dashboard
+                        </h2>
+
+                        <p class="mt-4 text-blue-100">
+                            Manage your movie collection, add new movies,
+                            and keep track of your recent activities.
+                        </p>
+
+                        <button
+                            onclick="showMovies()"
+                            class="mt-6 rounded-xl bg-white px-5 py-3 font-semibold text-indigo-700 shadow-md transition hover:bg-blue-50 hover:shadow-lg"
+                        >
+                            Manage Movies →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Dashboard Cards -->
+                <div class="mt-6 grid gap-6 md:grid-cols-3">
+
+
+                    <!-- Total Movies -->
+                    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+
+                        <p class="text-sm text-slate-500">
+                            Total Movies
+                        </p>
+
+                        <h3
+                            id="totalMovies"
+                            class="mt-2 text-3xl font-bold text-slate-800"
+                        >
+                            0
+                        </h3>
+
+                    </div>
+
+
+                    <!-- Activity -->
+                    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+
+                        <p class="text-sm text-slate-500">
+                            Recent Activity
+                        </p>
+
+                        <h3
+                            id="totalActivity"
+                            class="mt-2 text-3xl font-bold text-slate-800"
+                        >
+                            0
+                        </h3>
+
+                    </div>
+
+
+                    <!-- Status -->
+                    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+
+                        <p class="text-sm text-slate-500">
+                            Status
+                        </p>
+
+                        <h3 class="mt-2 text-xl font-bold text-green-600">
+                            Active
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MOVIES ================= -->
+
+            <div
+                id="moviesPage"
+                class="hidden"
+            >
+
+
+                <!-- Movies Header -->
+                <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+                    <div>
+
+                        <h2 class="text-2xl font-bold text-slate-800">
+                            Movies
+                        </h2>
+
+                        <p class="mt-1 text-sm text-slate-500">
+                            Manage your movie collection.
+                        </p>
+
+                    </div>
+
+
+                    <!-- THIS BUTTON OPENS THE FORM -->
+                    <button
+                        type="button"
+                        onclick="showMovieForm()"
+                        class="w-fit rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white shadow-md transition hover:bg-indigo-700"
+                    >
+                        + Add Movie
+                    </button>
+
+                </div>
+
+
+                <!-- ================= MOVIE FORM ================= -->
+
+                <!-- IMPORTANT: hidden means it does NOT show initially -->
+                <div
+                    id="movieForm"
+                    class="hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 md:p-8"
+                >
+
+                    <div class="mb-6 flex items-center justify-between">
+
+                        <div>
+
+                            <h2 class="text-2xl font-bold text-slate-800">
+                                Add New Movie
+                            </h2>
+
+                            <p class="mt-1 text-sm text-slate-500">
+                                Enter the details of the movie you want to add.
+                            </p>
+
+                        </div>
+
+
+                        <!-- CANCEL BUTTON -->
+                        <button
+                            type="button"
+                            onclick="hideMovieForm()"
+                            class="rounded-lg px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+
+                    <!-- FORM -->
+                    <form
+                        id="movieFormElement"
+                        onsubmit="addMovie(event)"
+                        class="space-y-5"
+                    >
+
+
+                        <!-- Title -->
+                        <div>
+
+                            <label
+                                for="movieTitle"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Movie Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="movieTitle"
+                                placeholder="Enter movie title"
+                                required
+                                class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
+                            >
+
+                        </div>
+
+
+                        <!-- Producer -->
+                        <div>
+
+                            <label
+                                for="movieProducer"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Movie Producer
+                            </label>
+
+                            <input
+                                type="text"
+                                id="movieProducer"
+                                placeholder="Enter producer name"
+                                required
+                                class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
+                            >
+
+                        </div>
+
+
+                        <!-- Release Date -->
+                        <div>
+
+                            <label
+                                for="movieReleaseDate"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Release Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="movieReleaseDate"
+                                required
+                                class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
+                            >
+
+                        </div>
+
+
+                        <!-- Submit -->
+                        <button
+                            type="submit"
+                            class="rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-indigo-700"
+                        >
+                            + Add Movie
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ================= MOVIE LIST ================= -->
+
+                <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+
+                    <div class="flex items-center justify-between">
+
+                        <div>
+
+                            <h3 class="text-xl font-bold text-slate-800">
+                                Added Movies
+                            </h3>
+
+                            <p class="text-sm text-slate-500">
+                                Movies in your collection
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            id="movieCount"
+                            class="rounded-full bg-indigo-100 px-3 py-1 text-sm font-semibold text-indigo-700"
+                        >
+                            0 Movies
+                        </span>
+
+                    </div>
+
+
+                    <ul
+                        id="movieList"
+                        class="mt-5 space-y-3"
+                    ></ul>
+
+                </div>
+
+
+                <!-- ================= ACTIVITY ================= -->
+
+                <div class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+
+                    <h3 class="text-xl font-bold text-slate-800">
+                        Recent Activity
+                    </h3>
+
+                    <p class="text-sm text-slate-500">
+                        Your latest movie activities
+                    </p>
+
+                    <ul
+                        id="activityList"
+                        class="mt-5 space-y-3"
+                    ></ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ==========================================
+           SHOW DASHBOARD
+        ========================================== */
+
+        function showDashboard() {
+
+            document
+                .getElementById("dashboardPage")
+                .classList
+                .remove("hidden");
+
+            document
+                .getElementById("moviesPage")
+                .classList
+                .add("hidden");
+
+        }
+
+
+        /* ==========================================
+           SHOW MOVIES PAGE
+        ========================================== */
+
+        function showMovies() {
+
+            document
+                .getElementById("dashboardPage")
+                .classList
+                .add("hidden");
+
+            document
+                .getElementById("moviesPage")
+                .classList
+                .remove("hidden");
+
+            /*
+             * Make sure the Add Movie form is hidden
+             * whenever the Movies page is opened.
+             */
+            hideMovieForm();
+
+        }
+
+
+        /* ==========================================
+           SHOW ADD MOVIE FORM
+        ========================================== */
+
+        function showMovieForm() {
+
+            const form = document.getElementById("movieForm");
+
+            form.classList.remove("hidden");
+
+            document.getElementById("movieTitle").focus();
+
+        }
+
+
+        /* ==========================================
+           HIDE ADD MOVIE FORM
+        ========================================== */
+
+        function hideMovieForm() {
+
+            const form = document.getElementById("movieForm");
+
+            form.classList.add("hidden");
+
+        }
+
+
+        /* ==========================================
+           ADD MOVIE
+        ========================================== */
+
+        function addMovie(event) {
+
+            event.preventDefault();
+
+
+            const title =
+                document
+                    .getElementById("movieTitle")
+                    .value
+                    .trim();
+
+
+            const producer =
+                document
+                    .getElementById("movieProducer")
+                    .value
+                    .trim();
+
+
+            const releaseDate =
+                document
+                    .getElementById("movieReleaseDate")
+                    .value;
+
+
+            /* Validate */
+            if (
+                title === "" ||
+                producer === "" ||
+                releaseDate === ""
+            ) {
+
+                alert("Please fill in all movie details.");
+
+                return;
+
+            }
+
+
+            /* ==========================================
+               CREATE MOVIE
+            ========================================== */
+
+            const li =
+                document.createElement("li");
+
+
+            li.className =
+                "flex flex-col gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-indigo-200 hover:bg-indigo-50 sm:flex-row sm:items-center sm:justify-between";
+
+
+            li.innerHTML = `
+
+                <div>
+
+                    <h4 class="font-bold text-slate-800">
+                        ${title}
+                    </h4>
+
+                    <p class="text-sm text-slate-500">
+                        Producer: ${producer}
+                    </p>
+
+                    <p class="text-xs text-slate-400">
+                        Release Date: ${releaseDate}
+                    </p>
+
+                </div>
+
+                <span class="w-fit rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                    Added
+                </span>
+
+            `;
+
+
+            document
+                .getElementById("movieList")
+                .appendChild(li);
+
+
+            /* ==========================================
+               CREATE ACTIVITY
+            ========================================== */
+
+            const activity =
+                document.createElement("li");
+
+
+            activity.className =
+                "flex items-center gap-3 rounded-xl bg-slate-50 p-4";
+
+
+            activity.innerHTML = `
+
+                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                    🎬
+                </div>
+
+                <div>
+
+                    <p class="text-sm font-medium text-slate-700">
+                        Added "${title}"
+                    </p>
+
+                    <p class="text-xs text-slate-400">
+                        Just now
+                    </p>
+
+                </div>
+
+            `;
+
+
+            document
+                .getElementById("activityList")
+                .prepend(activity);
+
+
+            /* ==========================================
+               UPDATE COUNTERS
+            ========================================== */
+
+            updateCounters();
+
+
+            /* ==========================================
+               CLEAR FORM
+            ========================================== */
+
+            document.getElementById("movieTitle").value = "";
+
+            document.getElementById("movieProducer").value = "";
+
+            document.getElementById("movieReleaseDate").value = "";
+
+
+            /* ==========================================
+               HIDE FORM AFTER ADDING
+            ========================================== */
+
+            hideMovieForm();
+
+        }
+
+
+        /* ==========================================
+           UPDATE COUNTERS
+        ========================================== */
+
+        function updateCounters() {
+
+            const movieCount =
+                document
+                    .getElementById("movieList")
+                    .children
+                    .length;
+
+
+            const activityCount =
+                document
+                    .getElementById("activityList")
+                    .children
+                    .length;
+
+
+            document
+                .getElementById("totalMovies")
+                .textContent = movieCount;
+
+
+            document
+                .getElementById("totalActivity")
+                .textContent = activityCount;
+
+
+            document
+                .getElementById("movieCount")
+                .textContent =
+                    movieCount +
+                    (movieCount === 1
+                        ? " Movie"
+                        : " Movies");
+
+        }
+
+
+       
+
+        function logout() {
+
+            localStorage.clear();
+
+            sessionStorage.clear();
+
+            window.location.href = "/login";
+
+        }
+
+    </script>
+
+</body>
+</html>
