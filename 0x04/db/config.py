@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Database module for the application"""
 from model.base import Base
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import sessionmaker, scoped_session
 from model.user import User
 from model.movie import Movie
@@ -21,6 +21,14 @@ class DB:
     def create_table(self):
         """Create tables in the database"""
         Base.metadata.create_all(self.__engine)
+        movie_columns = {
+            column["name"] for column in inspect(self.__engine).get_columns("movies")
+        }
+        if "thumbnail" not in movie_columns:
+            with self.__engine.begin() as connection:
+                connection.execute(
+                    text("ALTER TABLE movies ADD COLUMN thumbnail VARCHAR(255) NULL")
+                )
         session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session)
         

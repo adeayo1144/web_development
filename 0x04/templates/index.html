@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MovieZone</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#e50914",
+                        blue: "#080808"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-blue text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="fixed top-0 z-50 w-full bg-black/70 backdrop-blur-md">
+
+        <div class="mx-auto flex h-20 max-w-7xl items-center
+                    justify-between px-6">
+
+            <!-- Logo -->
+            <a href="/" class="text-2xl font-bold">
+                <span class="text-white-600">AYMovie</span>Zone
+            </a>
+
+
+            <!-- Buttons -->
+            <div class="flex items-center gap-3">
+
+                <a href="/login"
+                   class="rounded-lg border border-gray-600
+                          px-4 py-2 text-sm font-semibold
+                          hover:border-red-500 hover:text-red-500">
+                    Login
+                </a>
+
+                <a href="/register"
+                   class="rounded-lg bg-red-600 px-4 py-2
+                          text-sm font-semibold
+                          hover:bg-red-700">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div class="absolute inset-0">
+
+    <img
+        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba"
+        alt="Cinema"
+        class="h-full w-full object-cover"
+    >
+
+    <!-- Blue tint -->
+    <div class="absolute inset-0 bg-blue-600/40"></div>
+
+    <!-- Dark blue cinematic overlay -->
+    <div class="absolute inset-0
+                bg-gradient-to-r
+                from-blue-950/95
+                via-blue-900/65
+                to-blue-700/30">
+    </div>
+
+    <!-- Bottom fade -->
+    <div class="absolute inset-x-0 bottom-0 h-64
+                bg-gradient-to-t
+                from-dark
+                to-transparent">
+    </div>
+
+</div>
+
+
+        <!-- Hero content -->
+        <div class="relative mx-auto flex min-h-screen
+                    max-w-7xl items-center px-6 pt-20">
+
+            <div class="max-w-2xl">
+
+                <p class="mb-4 text-sm font-bold uppercase
+                          tracking-[0.3em] text-red-500">
+                    Your Movie Destination
+                </p>
+
+                <h1 class="text-5xl font-black leading-tight
+                           sm:text-6xl md:text-7xl">
+
+                    Discover Your
+                    <span class="text-red-600">
+                        Next Movie
+                    </span>
+
+                </h1>
+
+                <p class="mt-6 max-w-xl text-lg leading-relaxed
+                          text-gray-300">
+
+                    Explore thousands of movies, discover new
+                    favorites, and find something amazing to watch
+                    tonight.
+
+                </p>
+
+
+                <!-- Buttons -->
+                <div class="mt-8 flex flex-wrap gap-4">
+
+                    <a href="#movies"
+                       class="rounded-lg bg-red-600 px-7 py-3
+                              font-bold transition
+                              hover:bg-red-700 hover:scale-105">
+
+                        Explore Movies
+
+                    </a>
+
+                    <a href="/register"
+                       class="rounded-lg border border-gray-500
+                              bg-white/10 px-7 py-3 font-bold
+                              backdrop-blur transition
+                              hover:bg-white/20">
+
+                        Get Started
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MOVIES ================= -->
+    <section id="movies"
+             class="mx-auto max-w-7xl px-6 py-20">
+
+        <div class="mb-10">
+
+            <p class="text-sm font-semibold uppercase
+                      tracking-widest text-red-500">
+                Explore
+            </p>
+
+            <h2 class="mt-2 text-3xl font-bold md:text-4xl">
+                Popular Movies
+            </h2>
+
+        </div>
+
+
+        <!-- Movie cards -->
+        <div class="grid grid-cols-2 gap-5
+                    sm:grid-cols-3
+                    md:grid-cols-4
+                    lg:grid-cols-5">
+
+            <div class="group cursor-pointer">
+
+                <div class="overflow-hidden rounded-xl">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1"
+                        alt="Movie"
+                        class="aspect-[2/3] w-full object-cover
+                               transition duration-500
+                               group-hover:scale-110"
+                    >
+
+                </div>
+
+                <h3 class="mt-3 font-semibold">
+                    Movie Title
+                </h3>
+
+                <p class="mt-1 text-sm text-gray-400">
+                    Action • 2025
+                </p>
+
+            </div>
+
+
+            <div class="group cursor-pointer">
+
+                <div class="overflow-hidden rounded-xl">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1485846234645-a62644f84728"
+                        alt="Movie"
+                        class="aspect-[2/3] w-full object-cover
+                               transition duration-500
+                               group-hover:scale-110"
+                    >
+
+                </div>
+
+                <h3 class="mt-3 font-semibold">
+                    The Adventure
+                </h3>
+
+                <p class="mt-1 text-sm text-gray-400">
+                    Adventure • 2025
+                </p>
+
+            </div>
+
+
+
+            <div class="group cursor-pointer">
+
+                <div class="overflow-hidden rounded-xl">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c"
+                        alt="Movie"
+                        class="aspect-[2/3] w-full object-cover
+                               transition duration-500
+                               group-hover:scale-110"
+                    >
+
+                </div>
+
+                <h3 class="mt-3 font-semibold">
+                    Last Mission
+                </h3>
+
+                <p class="mt-1 text-sm text-gray-400">
+                    Action • 2024
+                </p>
+
+            </div>
+
+
+            <div class="group cursor-pointer">
+
+                <div class="overflow-hidden rounded-xl">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+                        alt="Movie"
+                        class="aspect-[2/3] w-full object-cover
+                               transition duration-500
+                               group-hover:scale-110"
+                    >
+
+                </div>
+
+                <h3 class="mt-3 font-semibold">
+                    The Journey
+                </h3>
+
+                <p class="mt-1 text-sm text-gray-400">
+                    Drama • 2024
+                </p>
+
+            </div>
+
+
+            <div class="group cursor-pointer">
+
+                <div class="overflow-hidden rounded-xl">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba"
+                        alt="Movie"
+                        class="aspect-[2/3] w-full object-cover
+                               transition duration-500
+                               group-hover:scale-110"
+                    >
+
+                </div>
+
+                <h3 class="mt-3 font-semibold">
+                    Midnight
+                </h3>
+
+                <p class="mt-1 text-sm text-gray-400">
+                    Thriller • 2024
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="mx-auto max-w-7xl px-6 pb-20">
+
+        <div class="rounded-2xl bg-gradient-to-r
+                    from-red-700 to-red-500 p-10
+                    text-center md:p-16">
+
+            <h2 class="text-3xl font-black md:text-5xl">
+                Ready to find your next movie?
+            </h2>
+
+            <p class="mx-auto mt-4 max-w-xl text-red-100">
+                Create an account and start discovering movies
+                you'll love.
+            </p>
+
+            <a href="/register"
+               class="mt-8 inline-block rounded-lg
+                      bg-white px-7 py-3 font-bold
+                      text-red-600 transition
+                      hover:bg-gray-100">
+
+                Register Account
+
+            </a>
+
+        </div>
+
+    </section>
+
+   <!-- ================= FOOTER ================= -->
+<footer class="border-t border-gray-800 bg-black">
+
+    <div class="mx-auto max-w-7xl px-6 py-14">
+
+        <!-- Footer Grid -->
+        <div class="grid grid-cols-2 gap-10
+                    md:grid-cols-4">
+
+            <!-- Brand -->
+            <div class="col-span-2 md:col-span-1">
+
+                <a href="/"
+                   class="text-2xl font-bold tracking-tight">
+                    <span class="text-red-600">AYMovie</span>Zone
+                </a>
+
+                <p class="mt-4 max-w-xs text-sm leading-relaxed
+                          text-gray-500">
+                    Discover movies, explore your favorites,
+                    and find something amazing to watch.
+                </p>
+
+            </div>
+            <!-- Account -->
+            <div>
+
+                <h3 class="mb-4 text-sm font-semibold
+                           uppercase tracking-wider text-white">
+                    Account
+                </h3>
+
+                <ul class="space-y-3 text-sm text-gray-500">
+
+                    <li>
+                        <a href="/login"
+                           class="transition hover:text-red-500">
+                            Login
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/register"
+                           class="transition hover:text-red-500">
+                            Register
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/profile"
+                           class="transition hover:text-red-500">
+                            My Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/favorites"
+                           class="transition hover:text-red-500">
+                            My Favorites
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Support -->
+            <div>
+
+                <h3 class="mb-4 text-sm font-semibold
+                           uppercase tracking-wider text-white">
+                    Support
+                </h3>
+
+                <ul class="space-y-3 text-sm text-gray-500">
+
+                    <li>
+                        <a href="/about"
+                           class="transition hover:text-red-500">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/contact"
+                           class="transition hover:text-red-500">
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/faq"
+                           class="transition hover:text-red-500">
+                            FAQ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/help"
+                           class="transition hover:text-red-500">
+                            Help Center
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom Footer -->
+        <div class="mt-12 flex flex-col gap-4 border-t
+                    border-gray-800 pt-8
+                    sm:flex-row sm:items-center
+                    sm:justify-between">
+
+            <p class="text-sm text-gray-600">
+                © 2026 AYMovieZone. All rights reserved.
+            </p>
+
+            <div class="flex gap-6 text-sm text-gray-600">
+
+                <a href="/privacy"
+                   class="transition hover:text-red-500">
+                    Privacy Policy
+                </a>
+
+                <a href="/terms"
+                   class="transition hover:text-red-500">
+                    Terms of Service
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

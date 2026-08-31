@@ -4,7 +4,7 @@ from db.config import DB
 import os
 
 args = [os.getenv("DB_HOST", "localhost"),
-        os.getenv("USER", "root"),
+        os.getenv("USER", "server"),
         os.getenv("DATABASE_NAME", "hbnb_dev_db"),
         os.getenv("PASSWORD", "Oluwapelumi1144")]
 
